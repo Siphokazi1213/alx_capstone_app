@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-<<<<<<< HEAD
 // StartScreen component for category selection
 const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   // Function to start the quiz, passing the selected category ID to the parent component
-=======
-// StartScreen 
-const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
-  // Function to start the quiz
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
   const handleStart = () => {
     if (selectedCategory) {
       onStartQuiz(selectedCategory);
@@ -21,40 +13,28 @@ const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
 
   return (
     <div className="flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-lg w-full max-w-lg mx-auto">
-<<<<<<< HEAD
-        <h1 className="text-5xl font-extrabold text-indigo-700 mb-4 text-center">QuizMaster</h1>
-        <p className="text-xl text-gray-700 mt-2 mb-6 text-center">Test your knowledge!</p>
-=======
+      {/* The main container for the logo */}
       <div className="flex flex-col items-center mb-6">
-        {/* SVG for the Brain icon, replacing the Lucide-React icon */}
-        <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-indigo-600 rounded-full mb-4 md:mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 md:w-10 md:h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {/* SVG for the Brain icon */}
+        <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-indigo-600 rounded-full mb-4 md:mb-6 flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-8 md:h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2a3 3 0 0 0-3 3v.5a3.5 3.5 0 0 1-3.5 3.5h-.5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h.5a3.5 3.5 0 0 1 3.5 3.5v.5a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3v-.5a3.5 3.5 0 0 1 3.5-3.5h.5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-.5a3.5 3.5 0 0 1-3.5-3.5v-.5a3 3 0 0 0-3-3h-4z" />
           </svg>
         </div>
         <h1 className="text-4xl font-extrabold text-indigo-700 text-center">QuizMaster</h1>
         <p className="text-xl text-gray-700 mt-2 text-center">Test your knowledge!</p>
       </div>
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
 
       <div className="w-full">
         {isLoading && <p className="text-gray-500 text-center">Loading categories...</p>}
         {error && <p className="text-red-500 text-center">{error}</p>}
         
         {!isLoading && categories.length > 0 && (
-<<<<<<< HEAD
-          <div className="mb-8">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Choose Your Category</label>
-            <select
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="p-4 w-full bg-gray-100 border-2 border-gray-300 rounded-xl text-gray-700 focus:outline-none focus:ring-4 focus:ring-indigo-500 transition-all duration-300 ease-in-out"
-=======
           <div className="space-y-2 mb-6">
             <label className="block text-sm font-medium text-gray-700">Choose Your Category</label>
             <select
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="p-3 w-full bg-gray-100 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
               value={selectedCategory || ""}
             >
               <option value="" disabled>Select a quiz category...</option>
@@ -70,15 +50,9 @@ const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
         <button
           onClick={handleStart}
           disabled={!selectedCategory || isLoading}
-<<<<<<< HEAD
-          className={`w-full py-4 px-6 rounded-xl text-white font-bold text-lg transition-all duration-300 ease-in-out transform hover:scale-105 ${
-            selectedCategory && !isLoading
-              ? 'bg-indigo-600 hover:bg-indigo-700 shadow-lg hover:shadow-xl'
-=======
           className={`w-full py-4 px-6 rounded-lg text-white font-semibold transition-all duration-300 ease-in-out ${
             selectedCategory && !isLoading
               ? 'bg-indigo-600 hover:bg-indigo-700 transform hover:scale-105'
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
               : 'bg-gray-400 cursor-not-allowed'
           }`}
         >
@@ -86,11 +60,7 @@ const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
         </button>
       </div>
 
-<<<<<<< HEAD
-      <div className="text-center pt-6 mt-6 border-t border-gray-200 w-full">
-=======
       <div className="text-center pt-4 mt-4 border-t border-gray-200 w-full">
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
         <p className="text-sm text-gray-500">
           🎯 10 questions • 📊 Instant results • 🏆 Score tracking
         </p>
@@ -101,10 +71,7 @@ const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
 
 // QuizPage component to display questions and handle answers
 const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, isLoading }) => {
-<<<<<<< HEAD
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-=======
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
 
   if (isLoading) {
     return (
@@ -132,28 +99,17 @@ const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, 
   if (!currentQuestion) {
       return null;
   }
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
   // Handle answer selection with visual feedback and a delay
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer);
     setTimeout(() => {
       onAnswer(answer);
       setSelectedAnswer(null); // Reset for the next question
-<<<<<<< HEAD
     }, 2000); // 2 second delay
   };
 
   // Button color based on answer state
-=======
-    }, 1500); // 1.5 second delay
-  };
-
-  // Determine button color based on answer state
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
   const getButtonColor = (answer) => {
     // If no answer has been selected yet, use the default color
     if (selectedAnswer === null) {
@@ -175,46 +131,23 @@ const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, 
   };
 
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col items-center p-8 bg-white rounded-3xl shadow2-lg w-full max-w-lg mx-auto">
-      <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center" dangerouslySetInnerHTML={{ __html: currentQuestion.question }}></h2>
-=======
     <div className="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg w-full max-w-lg mx-auto">
       <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center" dangerouslySetInnerHTML={{ __html: currentQuestion.question }}></h2>
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
         {currentQuestion.allAnswers.map((answer, index) => (
           <button
             key={index}
             onClick={() => handleAnswerClick(answer)}
-<<<<<<< HEAD
             disabled={selectedAnswer !== null} // Disable buttons after an answer is selected
-            className={`py-4 px-6 rounded-xl border-2 font-medium transition-all duration-200 ease-in-out ${getButtonColor(answer)}`}
-=======
-            disabled={selectedAnswer !== null} //Disable buttons after answer is selected
-            className="py-4 px-6 rounded-lg bg-gray-100 border border-gray-300 text-gray-800 font-medium hover:bg-indigo-100 hover:border-indigo-400 transition-all duration-200 ease-in-out transform hover:scale-105"
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
+            className={`py-4 px-6 rounded-lg border font-medium transition-all duration-200 ease-in-out ${getButtonColor(answer)}`}
             dangerouslySetInnerHTML={{ __html: answer }}
           ></button>
         ))}
       </div>
-<<<<<<< HEAD
-      <div className="mt-8 text-center text-lg text-gray-600">
-        Question {currentQuestionIndex + 1} of {questions.length}
-      </div>
-      
-      {/* Back to Home button */}
-      <button
-        onClick={onGoBack}
-        className="mt-6 py-2 px-4 rounded-xl bg-gray-200 text-gray-800 font-semibold transition-all duration-300 ease-in-out hover:bg-gray-300 transform hover:scale-105"
-      >
-        Back to Home
-      </button>
-=======
       <div className="mt-6 text-center text-lg text-gray-600">
         Question {currentQuestionIndex + 1} of {questions.length}
       </div>
-
+      
       {/* Back to Home button */}
       <button
         onClick={onGoBack}
@@ -222,31 +155,20 @@ const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, 
       >
         Back to Home
       </button>
-
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
     </div>
   );
 };
 
 // EndScreen component to display the final score
 const EndScreen = ({ score, totalQuestions, onPlayAgain }) => (
-<<<<<<< HEAD
-  <div className="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl w-full max-w-lg mx-auto text-center">
-    <h2 className="text-5xl font-extrabold text-green-600 mb-4">Quiz Complete! 🎉</h2>
-=======
   <div className="flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-lg w-full max-w-lg mx-auto text-center">
     <h2 className="text-4xl font-extrabold text-green-600 mb-4">Quiz Complete! 🎉</h2>
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
     <p className="text-2xl text-gray-700 mb-6">
       You scored <span className="text-green-600 font-bold">{score}</span> out of {totalQuestions}!
     </p>
     <button
       onClick={onPlayAgain}
-<<<<<<< HEAD
-      className="py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg transition-all duration-300 ease-in-out transform hover:scale-105"
-=======
       className="py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all duration-300 ease-in-out transform hover:scale-105"
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
     >
       Play Again
     </button>
@@ -293,11 +215,7 @@ const App = () => {
     return array;
   };
 
-<<<<<<< HEAD
   // Function to start the quiz based on the selected category
-=======
-  // Function to start the quiz based on  selected category
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
   const startQuiz = async (categoryId) => {
     setIsLoading(true);
     setError(null);
@@ -353,12 +271,7 @@ const App = () => {
 
   // Main component rendering based on quiz state
   return (
-<<<<<<< HEAD
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 to-purple-200 p-4 font-inter">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" />
-=======
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
->>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
       <div className="w-full max-w-3xl">
         {quizState === 'start' && (
           <StartScreen

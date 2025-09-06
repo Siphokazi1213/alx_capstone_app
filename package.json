@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "new-quiz-app",
+=======
+  "name": "capstone_quiz_app",
+>>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,7 +13,11 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+<<<<<<< HEAD
     "react-scripts": "5.0.1",
+=======
+    "react-scripts": "^0.0.0",
+>>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -35,5 +43,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.12"
+>>>>>>> 6ea469637b7ce11616835886d43d6ce7b237259c
   }
 }
