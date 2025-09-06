@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-// StartScreen component for category selection
+// StartScreen 
 const StartScreen = ({ onStartQuiz, categories, isLoading, error }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  // Function to start the quiz, passing the selected category ID to the parent component
+  // Function to start the quiz
   const handleStart = () => {
     if (selectedCategory) {
       onStartQuiz(selectedCategory);
@@ -98,6 +98,36 @@ const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, 
       return null;
   }
 
+  // Handle answer selection with visual feedback and a delay
+  const handleAnswerClick = (answer) => {
+    setSelectedAnswer(answer);
+    setTimeout(() => {
+      onAnswer(answer);
+      setSelectedAnswer(null); // Reset for the next question
+    }, 1500); // 1.5 second delay
+  };
+
+  // Determine button color based on answer state
+  const getButtonColor = (answer) => {
+    // If no answer has been selected yet, use the default color
+    if (selectedAnswer === null) {
+      return 'bg-gray-100 hover:bg-indigo-100 border-gray-300 hover:border-indigo-400';
+    }
+
+    // If the answer is correct, turn it green
+    if (answer === currentQuestion.correctAnswer) {
+      return 'bg-green-500 border-green-700 text-white';
+    }
+
+    // If the user selected an incorrect answer, turn it red
+    if (answer === selectedAnswer && answer !== currentQuestion.correctAnswer) {
+      return 'bg-red-500 border-red-700 text-white';
+    }
+
+    // All other buttons are disabled after a selection
+    return 'bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed';
+  };
+
   return (
     <div className="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg w-full max-w-lg mx-auto">
       <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center" dangerouslySetInnerHTML={{ __html: currentQuestion.question }}></h2>
@@ -105,7 +135,8 @@ const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, 
         {currentQuestion.allAnswers.map((answer, index) => (
           <button
             key={index}
-            onClick={() => onAnswer(answer)}
+            onClick={() => handleAnswerClick(answer)}
+            disabled={selectedAnswer !== null} //Disable buttons after answer is selected
             className="py-4 px-6 rounded-lg bg-gray-100 border border-gray-300 text-gray-800 font-medium hover:bg-indigo-100 hover:border-indigo-400 transition-all duration-200 ease-in-out transform hover:scale-105"
             dangerouslySetInnerHTML={{ __html: answer }}
           ></button>
@@ -114,6 +145,15 @@ const QuizPage = ({ questions, currentQuestionIndex, onAnswer, onGoBack, error, 
       <div className="mt-6 text-center text-lg text-gray-600">
         Question {currentQuestionIndex + 1} of {questions.length}
       </div>
+
+      {/* Back to Home button */}
+      <button
+        onClick={onGoBack}
+        className="mt-6 py-2 px-4 rounded-lg bg-gray-200 text-gray-800 font-semibold transition-all duration-300 ease-in-out hover:bg-gray-300"
+      >
+        Back to Home
+      </button>
+
     </div>
   );
 };
@@ -174,7 +214,7 @@ const App = () => {
     return array;
   };
 
-  // Function to start the quiz based on the selected category
+  // Function to start the quiz based on  selected category
   const startQuiz = async (categoryId) => {
     setIsLoading(true);
     setError(null);
